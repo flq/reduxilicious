@@ -13,3 +13,5 @@ linter rules I prefer:
 "member-access": false,
 "curly": false
 ```
+
+* dfd8409b8915 - store is introduced
