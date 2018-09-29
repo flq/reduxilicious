@@ -22,7 +22,7 @@ export function createStore(history: History) {
     (undefined as any) as ApplicationState,
     composeEnhancers(
       applyMiddleware(
-        routerMiddleware(history) // for dispatching history actions
+        routerMiddleware(history)
         // ... other middlewares ...
       )
     )
