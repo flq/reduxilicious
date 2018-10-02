@@ -3,10 +3,11 @@ import { Menu, Header, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { ApplicationState } from "./rootStore";
+import { isLoggedIn } from "./profile";
 
 export type NavBarProps = {} & ReturnType<typeof mapStateToProps>;
 
-export function NavBar({ isLoggedIn }: NavBarProps) {
+export function NavBar({ loggedIn }: NavBarProps) {
   return (
     <Menu>
       <Menu.Item>
@@ -22,12 +23,17 @@ export function NavBar({ isLoggedIn }: NavBarProps) {
           <Link to="/cart">My Cart</Link>
         </Menu.Item>
         <Menu.Item>
-          <Link to="/profile">{isLoggedIn ? "My Profile" : "Log in"}</Link> :
+          {getLink(loggedIn)}
         </Menu.Item>
       </Menu.Menu>
     </Menu>
   );
 }
 
-const mapStateToProps = (s: ApplicationState) => ({ isLoggedIn: s.user != null });
+function getLink(loggedIn: boolean) {
+  const [to, text] = loggedIn ? ["/profile", "My Profile"] : ["/login", "Log in"];
+  return <Link to={to}>{text}</Link>;
+}
+
+const mapStateToProps = (s: ApplicationState) => ({ loggedIn: isLoggedIn(s) });
 export default connect(mapStateToProps)(NavBar);

@@ -1,11 +1,19 @@
 export interface DB {
-    users: [{name: string, email: string}]
+  users: [{ login: string; name: string; email: string }];
 }
 
-const db : DB = JSON.parse(localStorage.getItem("db") || "{}");
+let db: DB | null = null;
 
-export function getDb() {
-    return db;
+try {
+  db = JSON.parse(localStorage.getItem("db") || "{}");
+} catch (e) {
+  // tslint:disable-next-line:no-console
+  console.error("Issue with loading the DB", e);
+}
+
+export function getDb() : DB {
+  if (!db) throw new Error("The DB is unavailable, check the log");
+  return db;
 }
 
 export function delay(ms: number) {

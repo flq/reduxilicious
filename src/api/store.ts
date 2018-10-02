@@ -18,5 +18,5 @@ export const operationsReducer = (state: OperationsState, a: OperationsActions) 
            }
            return [...state, operation];
        },
-       Done: ({operation}) => state //TODO: remove item
+       Done: ({operation}) => state /* remove operation from array */
    })
