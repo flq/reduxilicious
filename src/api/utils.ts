@@ -22,4 +22,4 @@ export function delay(ms: number) {
   });
 }
 
-export const standardDelay = delay(500);
+export const standardDelay = () => delay(1000);

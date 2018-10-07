@@ -3,6 +3,7 @@ import { connectRouter, routerMiddleware } from "connected-react-router";
 import { createEpicMiddleware, combineEpics, Epic } from "redux-observable";
 import { History } from "history";
 import { UserState, userReducer, loginEpic } from "./profile";
+import { OperationsState, operationsReducer } from "./api";
 
 // add support for redux browser extension https://github.com/zalmoxisus/redux-devtools-extension
 const windowIfDefined =
@@ -15,11 +16,13 @@ const composeEnhancers =
 const epicMiddleware = createEpicMiddleware();
 
 export interface ApplicationState {
+  operations: OperationsState;
   user: UserState;
 }
 
-const rootReducer = combineReducers({
-  user: userReducer
+const rootReducer = combineReducers<ApplicationState>({
+  user: userReducer,
+  operations: operationsReducer
 });
 
 const rootEpic = combineEpics(loginEpic) as Epic;
