@@ -9,7 +9,7 @@ import { push } from "connected-react-router";
 export type ProfileProps = {} & ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
 
-class Profile extends React.Component<ProfileProps> {
+export class Profile extends React.Component<ProfileProps> {
   render() {
     const { user, logOut } = this.props;
     return (

@@ -8,7 +8,7 @@ try {
   db = JSON.parse(localStorage.getItem("db") || "{}");
 } catch (e) {
   // tslint:disable-next-line:no-console
-  console.error("Issue with loading the DB", e);
+  // console.error("Issue with loading the DB", e);
 }
 
 export function getDb() : DB {
