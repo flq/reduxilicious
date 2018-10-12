@@ -12,7 +12,14 @@ I started this project with
 yarn create react-app my-app --scripts-version=react-scripts-ts
 ```
 
-And pulled in react-router, redux, semantic-ui-react and friends.
+# Stuff in use
+
+* redux, react-redux
+* react-router
+* [semantic-ui-react](https://react.semantic-ui.com/)
+* [unionize](https://github.com/pelotom/unionize)
+* [redux-observable](https://redux-observable.js.org/)
+
 
 # Linter
 
