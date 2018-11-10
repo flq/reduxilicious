@@ -1,5 +1,5 @@
 import { createStore as createReduxStore, applyMiddleware, compose, combineReducers } from "redux";
-import { connectRouter, routerMiddleware } from "connected-react-router";
+import { connectRouter, routerMiddleware, RouterState } from "connected-react-router";
 import { createEpicMiddleware, combineEpics, Epic } from "redux-observable";
 import { History } from "history";
 import { UserState, userReducer, loginEpic } from "./profile";
@@ -16,11 +16,13 @@ const composeEnhancers =
 const epicMiddleware = createEpicMiddleware();
 
 export interface ApplicationState {
+  router: RouterState,
   operations: OperationsState;
   user: UserState;
 }
 
-const rootReducer = combineReducers<ApplicationState>({
+const rootReducer = (history: History) => combineReducers<ApplicationState>({
+  router: connectRouter(history),
   user: userReducer,
   operations: operationsReducer
 });
@@ -29,7 +31,7 @@ const rootEpic = combineEpics(loginEpic) as Epic;
 
 export function createStore(history: History) {
   const store = createReduxStore(
-    connectRouter(history)(rootReducer),
+    rootReducer(history),
     (undefined as any) as ApplicationState,
     composeEnhancers(
       applyMiddleware(
