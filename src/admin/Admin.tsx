@@ -2,8 +2,8 @@ import React from "react";
 import { Segment, TextArea, Button, Form } from "semantic-ui-react";
 
 export default class Admin extends React.Component<{}, { input: string }> {
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     const value = localStorage.getItem("db");
     this.state = {
       input: value || ""

@@ -1,5 +1,6 @@
 export interface DB {
   users: [{ login: string; name: string; email: string }];
+  products: [{ id: number; name: string; image: string; description: string }]
 }
 
 let db: DB | null = null;

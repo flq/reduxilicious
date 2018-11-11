@@ -34,4 +34,27 @@ linter rules I prefer:
 "curly": false
 ```
 
-* dfd8409b8915 - store is introduced
+# Run the app
+
+The app needs a "db". It is just some JSON in app storage. Visit "/admin" and then paste in some valid json. Here is an example:
+
+```
+{
+  "users": [
+    {
+      "login": "Frank", 
+      "name": "Frank Quednau", 
+      "email": "me@somedomain.com" }
+  ],
+  "products": [
+    { 
+      "id": 1,
+      "name": "Neiko 30201A Socket Adapter and Drive Reducer Set", 
+      "image": "/assets/reducer1.jpg", 
+      "description": "Precisely machined, heat treated chrome vanadium steel provides excellent durability and strength with every impact movement"
+    }
+  ]
+}
+```
+
+Press **Save** and off you go.
